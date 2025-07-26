@@ -1,12 +1,6 @@
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
-
-interface Product {
-  id: number;
-  name: string;
-  price: string;
-  image: string;
-}
+import { Product } from "@/lib";
 
 interface ProductCardProps {
   product: Product;

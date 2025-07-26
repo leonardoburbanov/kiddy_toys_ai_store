@@ -1,13 +1,7 @@
-import { ProductCard } from "./product-card";
+import { Product } from "@/lib";
+import { ProductCard } from "@/components/product-card";
 
-interface Product {
-  id: number;
-  name: string;
-  price: string;
-  image: string;
-}
-
-interface ProductCarouselProps {
+interface ProductCarouselCustomProps {
   products: Product[];
 }
 
@@ -15,7 +9,7 @@ interface ProductCarouselProps {
  * Horizontal scrollable carousel component for displaying products
  * @param products - Array of products to display in the carousel
  */
-export function ProductCarousel({ products }: ProductCarouselProps) {
+export function ProductCarouselCustom({ products }: ProductCarouselCustomProps) {
   return (
     <div className="mb-16">
       <div className="relative">

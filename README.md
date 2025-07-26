@@ -1,22 +1,46 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# KIDDY TOYS AI Store
+
+An AI-powered early stimulation baby toys store featuring products from Latam, US, and Europe. Built with Next.js, TypeScript, and Vercel AI SDK.
+
+## Features
+
+- **AI-Powered Chat Assistant**: Get personalized recommendations for baby toys
+- **Product Showcase**: Browse AI-powered early stimulation toys
+- **Responsive Design**: Modern UI with Tailwind CSS
+- **Real-time Chat**: Interactive AI assistant for customer support
 
 ## Getting Started
 
-First, run the development server:
+First, set up your environment variables:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+# Create .env.local file
+cp .env.local.example .env.local
+```
+
+Add your OpenAI API key to `.env.local`:
+```
+OPENAI_API_KEY=your_openai_api_key_here
+```
+
+Then, run the development server:
+
+```bash
 pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Chat Functionality
+
+The app includes an AI-powered chat assistant that helps customers:
+
+- Find the perfect AI-powered baby toys for early stimulation
+- Get product recommendations based on age and developmental needs
+- Learn about developmental benefits of different toys
+- Receive personalized customer support
+
+The chat is available both as a dedicated section on the homepage and as a floating button on all pages.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
