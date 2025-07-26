@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "KIDDY TOYS AI - AI-Powered Early Stimulation Baby Toys",
+  title: "Kiddy Toys - AI-Powered Early Stimulation Baby Toys",
   description: "Discover AI-powered early stimulation and purpose baby toys from Latam, US, and Europe. Innovative learning toys for baby development.",
 };
 

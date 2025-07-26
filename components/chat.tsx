@@ -35,13 +35,13 @@ export function Chat() {
             
             <div
               className={cn(
-                'rounded-lg px-4 py-2 max-w-xs lg:max-w-md',
+                'rounded-lg px-4 py-2 max-w-[280px]',
                 message.role === 'user'
                   ? 'bg-blue-600 text-white ml-auto'
                   : 'bg-gray-100 text-gray-900'
               )}
             >
-              <p className="text-sm whitespace-pre-wrap">{message.content}</p>
+              <p className="text-sm whitespace-pre-wrap break-words">{message.content}</p>
             </div>
             
             {message.role === 'user' && (
@@ -67,16 +67,21 @@ export function Chat() {
       </div>
 
       {/* Input Form */}
-      <div className="p-4 border-t border-gray-200">
+      <div className="p-4 border-t border-gray-200 bg-white">
         <form onSubmit={handleSubmit} className="flex gap-2">
           <Input
             value={input}
             onChange={handleInputChange}
-            placeholder="Ask about our AI-powered baby toys..."
-            className="flex-1"
+            placeholder="Ask about AI-powered baby toys..."
+            className="flex-1 min-w-0 text-sm"
             disabled={isLoading}
           />
-          <Button type="submit" disabled={isLoading || !input.trim()}>
+          <Button 
+            type="submit" 
+            size="icon"
+            disabled={isLoading || !input.trim()}
+            className="flex-shrink-0"
+          >
             <Send className="h-4 w-4" />
           </Button>
         </form>

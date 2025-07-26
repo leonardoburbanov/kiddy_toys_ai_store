@@ -1,17 +1,19 @@
 import Image from "next/image";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Search } from "lucide-react";
+import { Search, MessageCircle } from "lucide-react";
+import { useSidebarContext } from "@/components/chat-layout";
 
 /**
- * Custom Navigation bar component with logo, navigation links, and search functionality
+ * Custom Navigation bar component with logo, navigation links, search functionality, and chat sidebar toggle
  */
 export function NavbarCustom() {
+  const { isOpen, toggleSidebar } = useSidebarContext();
+
   return (
-    <header className="w-full flex items-center justify-between px-8 py-6 border-b border-gray-200">
+    <header className="w-full flex items-center justify-between px-8 py-4 bg-white border-b border-gray-200">
       <div className="flex items-center gap-3">
-        <Image src="/next.svg" alt="Logo" width={32} height={32} />
-        <span className="text-xl font-bold tracking-tight">KIDDY TOYS AI</span>
+        <Image src="/kiddy_toys_logo.svg" alt="Logo" width={124} height={32} />
       </div>
       
       <nav className="flex gap-6 text-base font-medium">
@@ -31,6 +33,15 @@ export function NavbarCustom() {
         </div>
         <Button variant="outline" size="icon" className="rounded-full">
           <Search className="h-4 w-4" />
+        </Button>
+        <Button 
+          variant="outline" 
+          size="icon" 
+          className="rounded-full"
+          onClick={toggleSidebar}
+          title={isOpen ? "Close AI Assistant" : "Open AI Assistant"}
+        >
+          <MessageCircle className="h-4 w-4" />
         </Button>
       </div>
     </header>
