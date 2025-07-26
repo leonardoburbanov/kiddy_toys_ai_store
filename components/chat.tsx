@@ -29,24 +29,31 @@ export function Chat() {
           >
             {message.role === 'assistant' && (
               <div className="flex-shrink-0">
-                <Bot className="h-6 w-6 text-blue-600" />
+                <div className="w-8 h-8 rounded-full flex items-center justify-center" style={{ backgroundColor: '#7829DF' }}>
+                  <Bot className="h-5 w-5 text-white" />
+                </div>
               </div>
             )}
             
             <div
               className={cn(
-                'rounded-lg px-4 py-2 max-w-[280px]',
+                'rounded-lg px-4 py-2 max-w-[280px] shadow-sm',
                 message.role === 'user'
-                  ? 'bg-blue-600 text-white ml-auto'
-                  : 'bg-gray-100 text-gray-900'
+                  ? 'text-white ml-auto'
+                  : 'text-gray-900'
               )}
+              style={{
+                backgroundColor: message.role === 'user' ? '#7829DF' : '#C7A7F1'
+              }}
             >
               <p className="text-sm whitespace-pre-wrap break-words">{message.content}</p>
             </div>
             
             {message.role === 'user' && (
               <div className="flex-shrink-0">
-                <User className="h-6 w-6 text-gray-600" />
+                <div className="w-8 h-8 rounded-full flex items-center justify-center bg-gray-200">
+                  <User className="h-5 w-5 text-gray-600" />
+                </div>
               </div>
             )}
           </div>
@@ -54,12 +61,14 @@ export function Chat() {
         
         {isLoading && (
           <div className="flex items-start gap-3">
-            <Bot className="h-6 w-6 text-blue-600" />
-            <div className="bg-gray-100 rounded-lg px-4 py-2">
+            <div className="w-8 h-8 rounded-full flex items-center justify-center" style={{ backgroundColor: '#7829DF' }}>
+              <Bot className="h-5 w-5 text-white" />
+            </div>
+            <div className="rounded-lg px-4 py-2 shadow-sm" style={{ backgroundColor: '#C7A7F1' }}>
               <div className="flex space-x-1">
-                <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
-                <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
-                <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                <div className="w-2 h-2 rounded-full animate-bounce" style={{ backgroundColor: '#7829DF' }}></div>
+                <div className="w-2 h-2 rounded-full animate-bounce" style={{ backgroundColor: '#7829DF', animationDelay: '0.1s' }}></div>
+                <div className="w-2 h-2 rounded-full animate-bounce" style={{ backgroundColor: '#7829DF', animationDelay: '0.2s' }}></div>
               </div>
             </div>
           </div>
@@ -73,7 +82,7 @@ export function Chat() {
             value={input}
             onChange={handleInputChange}
             placeholder="Ask about AI-powered baby toys..."
-            className="flex-1 min-w-0 text-sm"
+            className="flex-1 min-w-0 text-sm border-gray-200 focus:border-purple-500 focus:ring-purple-500"
             disabled={isLoading}
           />
           <Button 
@@ -81,8 +90,9 @@ export function Chat() {
             size="icon"
             disabled={isLoading || !input.trim()}
             className="flex-shrink-0"
+            style={{ backgroundColor: '#7829DF' }}
           >
-            <Send className="h-4 w-4" />
+            <Send className="h-4 w-4 text-white" />
           </Button>
         </form>
       </div>

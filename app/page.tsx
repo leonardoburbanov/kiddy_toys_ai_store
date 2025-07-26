@@ -1,9 +1,10 @@
 'use client';
 
-import React from "react";
+import React, { useMemo } from "react";
 import { Product } from "@/lib";
 import { ProductCard } from "@/components/product-card";
 import { useSidebarContext } from "@/components/chat-layout";
+import { useSearchContext } from "@/lib/search-context";
 
 const featuredProducts: Product[] = [
   {
@@ -30,45 +31,9 @@ const allProducts: Product[] = [
   ...featuredProducts,
   {
     id: 4,
-    name: "AI Math Learning Baby Tablet",
+    name: "Big Feelings Pineapple",
     price: "$129.99 USD",
-    image: "/window.svg",
-  },
-  {
-    id: 5,
-    name: "Smart Baby Building Blocks",
-    price: "$67.99 USD",
-    image: "/file.svg",
-  },
-  {
-    id: 6,
-    name: "AI Language Learning Baby Toy",
-    price: "$78.99 USD",
-    image: "/next.svg",
-  },
-  {
-    id: 7,
-    name: "Interactive Baby Puzzle Mat",
-    price: "$54.99 USD",
-    image: "/vercel.svg",
-  },
-  {
-    id: 8,
-    name: "Smart Baby Art Drawing Board",
-    price: "$89.99 USD",
-    image: "/globe.svg",
-  },
-  {
-    id: 9,
-    name: "AI Music Learning Baby Keyboard",
-    price: "$112.99 USD",
-    image: "/window.svg",
-  },
-  {
-    id: 10,
-    name: "Interactive Baby Science Kit",
-    price: "$95.99 USD",
-    image: "/file.svg",
+    image: "/products/pineapple.jpg",
   },
 ];
 
@@ -88,19 +53,17 @@ export default function Home() {
           }`}>
             {/* Large Product Block (2/3 width) */}
             <div className="lg:col-span-2">
-              <div className="bg-white rounded-lg border border-gray-200 p-6 h-full shadow-sm">
+              <div className="bg-violet-300 rounded-xl border border-gray-200 p-1 h-full shadow-sm">
                 <ProductCard product={featuredProducts[0]} size="large" />
               </div>
             </div>
             
             {/* Two Smaller Stacked Products (1/3 width) */}
             <div className="lg:col-span-1 flex flex-col gap-6">
-              <div className="bg-white rounded-lg border border-gray-200 p-4 shadow-sm">
-                <h4 className="text-sm font-medium mb-3 text-gray-900">Product 2</h4>
+              <div className="bg-violet-300 rounded-xl border border-gray-200 p-1 shadow-sm">
                 <ProductCard product={featuredProducts[1]} size="small" />
               </div>
-              <div className="bg-white rounded-lg border border-gray-200 p-4 shadow-sm">
-                <h4 className="text-sm font-medium mb-3 text-gray-900">Product 3</h4>
+              <div className="bg-violet-300 rounded-xl border border-gray-200 p-1 shadow-sm">
                 <ProductCard product={featuredProducts[2]} size="small" />
               </div>
             </div>
@@ -114,8 +77,7 @@ export default function Home() {
           isOpen ? 'lg:pr-80' : 'lg:pr-0'
         }`}>
           {allProducts.slice(0, 4).map((product) => (
-            <div key={product.id} className="bg-white rounded-lg border border-gray-200 p-4 shadow-sm">
-              <h4 className="text-sm font-medium mb-3 text-gray-900">Product {product.id}</h4>
+            <div key={product.id} className="bg-white rounded-xl border border-gray-200 p-1 shadow-sm">
               <ProductCard product={product} size="small" />
             </div>
           ))}

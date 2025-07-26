@@ -21,7 +21,7 @@ export function ProductCard({ product, size = "small" }: ProductCardProps) {
       <Card className="bg-white hover:shadow-md transition-shadow h-full border border-gray-200 overflow-hidden">
         <CardContent className="relative p-0 h-full">
           {/* Background Image */}
-          <div className="absolute inset-0 w-full h-full bg-gray-100">
+          <div className="absolute inset-0 w-full h-full bg-white">
             <Image
               src={product.image}
               alt={product.name}
@@ -33,14 +33,18 @@ export function ProductCard({ product, size = "small" }: ProductCardProps) {
           </div>
           
           {/* Overlaid Product Info */}
-          <div className="absolute bottom-0 left-0 right-0 z-10 p-6">
-            <div className="flex items-center justify-between bg-black bg-opacity-90 text-white rounded-lg p-3">
-              <span className="text-sm font-medium truncate">
-                {product.name}
-              </span>
-              <span className="bg-blue-500 text-white px-3 py-1 rounded-md text-sm font-bold ml-2">
-                {product.price}
-              </span>
+          <div className="absolute bottom-0 left-0 right-0 z-10 p-2">
+            <div className="flex items-center justify-between rounded-lg p-2 shadow-md" style={{ backgroundColor: '#7829DF' }}>
+              <div className="flex-1 pr-2">
+                <span className="text-xs font-semibold text-white leading-tight block">
+                  {product.name}
+                </span>
+              </div>
+              <div className="flex flex-col items-end">
+                <span className="text-white px-2 py-1 rounded text-xs font-bold" style={{ backgroundColor: '#C7A7F1' }}>
+                  {product.price}
+                </span>
+              </div>
             </div>
           </div>
         </CardContent>
@@ -50,28 +54,32 @@ export function ProductCard({ product, size = "small" }: ProductCardProps) {
   
   return (
     <Card className="bg-white hover:shadow-md transition-shadow h-full border border-gray-200">
-      <CardContent className="flex flex-col items-center p-6">
-        <div className="w-full flex justify-center mb-4">
-          <div className={`${isLarge ? 'w-full h-80' : 'w-full h-48'} flex items-center justify-center bg-gray-50 rounded-lg overflow-hidden border border-gray-200`}>
+      <CardContent className="flex flex-col items-center p-3">
+        <div className="w-full flex justify-center mb-2">
+          <div className={`${isLarge ? 'w-full h-40' : 'w-full h-24'} relative flex items-center justify-center bg-gradient-to-br rounded-lg overflow-hidden border border-gray-200 shadow-sm`}>
             <Image
               src={product.image}
               alt={product.name}
-              width={isLarge ? 400 : 250}
-              height={isLarge ? 320 : 200}
-              className="object-contain w-full h-full p-1"
+              fill
+              className="object-contain"
               priority
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
           </div>
         </div>
         <div className="w-full">
           {/* Product Label - similar to the image design */}
-          <div className="flex items-center justify-between bg-gray-900 text-white rounded-lg p-3 mb-3">
-            <span className="text-sm font-medium truncate">
-              {product.name}
-            </span>
-            <span className="bg-blue-500 text-white px-3 py-1 rounded-md text-sm font-bold ml-2">
-              {product.price}
-            </span>
+          <div className="flex items-center justify-between rounded-lg p-2 shadow-sm" style={{ backgroundColor: '#7829DF' }}>
+            <div className="flex-1 pr-2">
+              <span className="text-xs font-semibold text-white leading-tight block">
+                {product.name}
+              </span>
+            </div>
+            <div className="flex flex-col items-end">
+              <span className="text-white px-2 py-1 rounded text-xs font-bold" style={{ backgroundColor: '#C7A7F1' }}>
+                {product.price}
+              </span>
+            </div>
           </div>
         </div>
       </CardContent>
