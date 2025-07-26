@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ChatLayout } from "@/components/chat-layout";
+import { SearchProvider } from "@/lib/search-context";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,9 +29,11 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ChatLayout>
-          {children}
-        </ChatLayout>
+        <SearchProvider>
+          <ChatLayout>
+            {children}
+          </ChatLayout>
+        </SearchProvider>
       </body>
     </html>
   );

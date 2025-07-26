@@ -64,7 +64,7 @@ export function ChatLayout({ children }: ChatLayoutProps) {
               {/* Main Content - Left Column */}
               <main 
                 className={`px-6 py-8 transition-all duration-300 ease-in-out ${
-                  isOpen ? 'pr-8' : 'pr-6'
+                  isOpen ? 'max-w-[calc(100vw-480px)]' : 'max-w-full'
                 }`}
               >
                 {children}
@@ -79,8 +79,8 @@ export function ChatLayout({ children }: ChatLayoutProps) {
                 style={{ 
                   top: '4.5rem', 
                   height: 'calc(100vh - 4.5rem)',
-                  width: '320px',
-                  maxWidth: '320px'
+                  width: '480px',
+                  maxWidth: '480px'
                 }}
               >
                 <SidebarHeader className="border-b border-gray-200 p-6 bg-gradient-to-r from-gray-50 to-white">
