@@ -6,7 +6,6 @@ import { Input } from '@/components/ui/input';
 import { Send, Bot, User } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { ProductCarousel } from './product-carousel';
-import { Product } from '@/lib/types';
 import { getRelevantProducts } from '@/lib/tools';
 
 /**

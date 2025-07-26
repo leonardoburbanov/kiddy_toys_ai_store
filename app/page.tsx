@@ -1,17 +1,15 @@
 'use client';
 
 import React, { useMemo } from "react";
-import { Product } from "@/lib";
 import { ProductCard } from "@/components/product-card";
 import { useSidebarContext } from "@/components/chat-layout";
 import { useSearchContext } from "@/lib/search-context";
-import { allProducts, featuredProducts } from "@/lib/products";
+import { allProducts } from "@/lib/products";
 
 /**
  * Main Home page displaying AI-powered early stimulation baby toys from Latam, US, and Europe.
  */
 export default function Home() {
-  const { isOpen } = useSidebarContext();
   const { searchQuery } = useSearchContext();
 
   // Filter products based on search query

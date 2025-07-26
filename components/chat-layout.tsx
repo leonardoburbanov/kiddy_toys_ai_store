@@ -3,14 +3,12 @@
 import React, { createContext, useContext, useState } from 'react';
 import { NavbarCustom } from "@/kiddy_toys_ai/navbar-custom";
 import { FooterCustom } from "@/kiddy_toys_ai/footer-custom";
-import { ChatSidebar } from "@/components/chat-sidebar";
 import { Chat } from "@/components/chat";
 import {
   Sidebar,
   SidebarContent,
   SidebarHeader,
   SidebarProvider,
-  SidebarTrigger,
   SidebarInset,
 } from '@/components/ui/sidebar';
 

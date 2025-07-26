@@ -1,4 +1,5 @@
 import { searchProducts, searchProductsByDescription } from './products';
+import { Product } from './types';
 
 /**
  * Simple function to get relevant products based on a query
@@ -23,7 +24,7 @@ export function getRelevantProducts(query: string) {
     'educativo': 'educational'
   };
   
-  let spanishMatches: any[] = [];
+  let spanishMatches: Product[] = [];
   for (const [spanish, english] of Object.entries(spanishTerms)) {
     if (query.toLowerCase().includes(spanish)) {
       const matches = searchProducts(english);
