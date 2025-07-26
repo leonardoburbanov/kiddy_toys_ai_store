@@ -5,6 +5,9 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Send, Bot, User } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { ProductCarousel } from './product-carousel';
+import { Product } from '@/lib/types';
+import { getRelevantProducts } from '@/lib/tools';
 
 /**
  * Chat component for AI-powered customer support
@@ -37,16 +40,42 @@ export function Chat() {
             
             <div
               className={cn(
-                'rounded-lg px-4 py-2 max-w-[280px] shadow-sm',
+                'rounded-lg px-4 py-2 shadow-sm',
                 message.role === 'user'
-                  ? 'text-white ml-auto'
-                  : 'text-gray-900'
+                  ? 'text-white ml-auto max-w-[280px]'
+                  : 'text-gray-900 max-w-[400px]'
               )}
               style={{
                 backgroundColor: message.role === 'user' ? '#7829DF' : '#C7A7F1'
               }}
             >
               <p className="text-sm whitespace-pre-wrap break-words">{message.content}</p>
+              
+              {/* Check if message mentions products and show them */}
+              {message.role === 'assistant' && (
+                (() => {
+                  // Find the corresponding user message
+                  const messageIndex = messages.findIndex(m => m.id === message.id);
+                  const userMessage = messageIndex > 0 ? messages[messageIndex - 1]?.content || '' : '';
+                  const relevantProducts = getRelevantProducts(userMessage);
+                  
+                  if (relevantProducts.length > 0) {
+                    return (
+                      <div className="mt-3">
+                        <div className="text-xs text-green-600 mb-2">
+                          ✓ Found {relevantProducts.length} relevant products
+                        </div>
+                        <ProductCarousel 
+                          products={relevantProducts} 
+                          title="Relevant Products"
+                        />
+                      </div>
+                    );
+                  }
+                  
+                  return null;
+                })()
+              )}
             </div>
             
             {message.role === 'user' && (
@@ -64,7 +93,7 @@ export function Chat() {
             <div className="w-8 h-8 rounded-full flex items-center justify-center" style={{ backgroundColor: '#7829DF' }}>
               <Bot className="h-5 w-5 text-white" />
             </div>
-            <div className="rounded-lg px-4 py-2 shadow-sm" style={{ backgroundColor: '#C7A7F1' }}>
+            <div className="rounded-lg px-4 py-2 shadow-sm max-w-[400px]" style={{ backgroundColor: '#C7A7F1' }}>
               <div className="flex space-x-1">
                 <div className="w-2 h-2 rounded-full animate-bounce" style={{ backgroundColor: '#7829DF' }}></div>
                 <div className="w-2 h-2 rounded-full animate-bounce" style={{ backgroundColor: '#7829DF', animationDelay: '0.1s' }}></div>

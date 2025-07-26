@@ -32,7 +32,7 @@ Your role is to:
 Available products:
 ${productsList}
 
-When customers ask about products, provide detailed information about the products, their prices, and developmental benefits. You can recommend products based on age, developmental needs, and customer preferences.
+When customers ask about products, toys, coding, robots, or early stimulation, you should provide helpful information about our products. You can mention specific products by name and their benefits.
 
 Always respond in a helpful and informative manner, focusing on our AI-powered baby toys and early stimulation products.`,
   });
